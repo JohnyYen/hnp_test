@@ -1,7 +1,7 @@
 import pandas as pd
 from scipy.stats import kruskal
-import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 def execute_kruskal_wallis(data: pd.DataFrame, group_col: str, value_col: str):
     """
@@ -56,8 +56,8 @@ def plot_results(data: pd.DataFrame, group_col: str, value_col: str):
     plt.show()
     
 
-df = pd.read_csv("./data/mecanicas_sintetica.csv")
-result_test = execute_kruskal_wallis(data=df, group_col='mecánica', value_col='intentos_hasta_dominar')
+df = pd.read_csv("./data/mecanicas_sinteticas.csv")
+result_test = execute_kruskal_wallis(data=df, group_col='mecanica', value_col='tiempo_total_min')
 evaluation = evaluate_results(result_test, alpha=0.05)
 print(evaluation)
-plot_results(data=df, group_col='mecánica', value_col='intentos_hasta_dominar')
+plot_results(data=df, group_col='mecanica', value_col='tiempo_total_min')
