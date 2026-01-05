@@ -53,6 +53,7 @@ def plot_results(data: pd.DataFrame, group_col: str, value_col: str):
     plt.title('Kruskal-Wallis Test Results')
     plt.xlabel(group_col)
     plt.ylabel(value_col)
+    plt.savefig(f"./plots/kruskal_wallis_{group_col}_{value_col}.png")
     plt.show()
     
 
@@ -61,3 +62,15 @@ result_test = execute_kruskal_wallis(data=df, group_col='mecanica', value_col='t
 evaluation = evaluate_results(result_test, alpha=0.05)
 print(evaluation)
 plot_results(data=df, group_col='mecanica', value_col='tiempo_total_min')
+
+df = pd.read_csv("../data/mecanicas_sinteticas.csv")
+result_test = execute_kruskal_wallis(data=df, group_col='mecanica', value_col='intentos_hasta_dominar')
+evaluation = evaluate_results(result_test, alpha=0.05)
+print(evaluation)
+plot_results(data=df, group_col='mecanica', value_col='intentos_hasta_dominar')
+
+df = pd.read_csv("../data/mecanicas_sinteticas.csv")
+result_test = execute_kruskal_wallis(data=df, group_col='mecanica', value_col='carga_cognitiva_likert')
+evaluation = evaluate_results(result_test, alpha=0.05)
+print(evaluation)
+plot_results(data=df, group_col='mecanica', value_col='carga_cognitiva_likert')
